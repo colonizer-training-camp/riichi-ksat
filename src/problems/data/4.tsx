@@ -1,5 +1,6 @@
-import View들여쓰기 from '@/components/View들여쓰기'
+import BoxIndent from '@/components/BoxIndent'
 import type { Problem } from '../types'
+import ProblemScore from '@/components/ProblemScore'
 
 const PROBLEM: Problem = {
   index: 4,
@@ -7,8 +8,8 @@ const PROBLEM: Problem = {
   content: {
     ko: (
       <>
-        다음은 오프라인 대국 예절에 대한 글이다.
-        <View들여쓰기>
+        <p>다음은 오프라인 대국 예절에 대한 글이다.</p>
+        <BoxIndent>
           <p>
             오프라인 대국은 온라인 대국과는 다르게 대국의 흐름을 방해하는 반칙
             행위가 발생할 수 있습니다. 경우에 따라서는 반칙을 한 작사에게 벌점을
@@ -18,15 +19,17 @@ const PROBLEM: Problem = {
             즐거운 오프라인 대국을 위해서는 서로 정중한 태도를 유지하는 것이
             중요합니다.
           </p>
-        </View들여쓰기>
-        위 글의 내용으로 보아 오프라인 대국에 임하는 작사의 태도로 가장 적절한
-        것은?
+        </BoxIndent>
+        <p>
+          위 글의 내용으로 보아 오프라인 대국에 임하는 작사의 태도로 가장 적절한
+          것은? <ProblemScore score={3} />
+        </p>
       </>
     ),
     ja: (
       <>
         다음은 오프라인 대국 예절에 대한 글이다.
-        <View들여쓰기>
+        <BoxIndent>
           <p>
             오프라인 대국은 온라인 대국과는 다르게 대국의 흐름을 방해하는 반칙
             행위가 발생할 수 있습니다. 경우에 따라서는 반칙을 한 작사에게 벌점을
@@ -36,9 +39,9 @@ const PROBLEM: Problem = {
             즐거운 오프라인 대국을 위해서는 서로 정중한 태도를 유지하는 것이
             중요합니다.
           </p>
-        </View들여쓰기>
+        </BoxIndent>
         위 글의 내용으로 보아 오프라인 대국에 임하는 작사의 태도로 가장 적절한
-        것은?
+        것은? <ProblemScore score={3} />
       </>
     ),
   },

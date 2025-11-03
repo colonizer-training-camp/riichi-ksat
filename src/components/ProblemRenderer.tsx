@@ -19,6 +19,18 @@ const OptionContainer = styled.div`
   display: grid;
 `
 
+const ProblemContent = styled.div`
+  & > p {
+    margin: 1em 0;
+    text-indent: 1em;
+  }
+  & > p:first-of-type {
+    display: inline;
+    margin-top: 0;
+    text-indent: 0;
+  }
+`
+
 interface Props {
   problem: Problem
   lang?: Language
@@ -30,23 +42,25 @@ const ProblemRenderer = ({ problem, lang }: Props) => {
     return (
       <ThemeProvider theme={{ language: lang }}>
         <FontOverride>
-          <ProblemNo index={problem.index} />
-          {problem.content[lang]}
-          <OptionContainer
-            style={{
-              gridTemplateColumns: `repeat(${problem.optionPerRow}, 1fr)`,
-            }}
-          >
-            {problem.options
-              .filter((x) => x)
-              .map((option, idx) => (
-                <OptionRenderer key={idx} index={idx}>
-                  {option && 'ko' in (option as Record<string, unknown>)
-                    ? (option as Record<string, ReactNode>)[lang]
-                    : (option as ReactNode)}
-                </OptionRenderer>
-              ))}
-          </OptionContainer>
+          <ProblemContent>
+            <ProblemNo index={problem.index} />
+            {problem.content[lang]}
+            <OptionContainer
+              style={{
+                gridTemplateColumns: `repeat(${problem.optionPerRow}, 1fr)`,
+              }}
+            >
+              {problem.options
+                .filter((x) => x)
+                .map((option, idx) => (
+                  <OptionRenderer key={idx} index={idx}>
+                    {option && 'ko' in (option as Record<string, unknown>)
+                      ? (option as Record<string, ReactNode>)[lang]
+                      : (option as ReactNode)}
+                  </OptionRenderer>
+                ))}
+            </OptionContainer>
+          </ProblemContent>
         </FontOverride>
       </ThemeProvider>
     )
