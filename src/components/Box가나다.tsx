@@ -4,7 +4,7 @@ import styled from '@emotion/styled'
 const Box가나다 = styled.ol`
   border: 1px solid;
   padding: 1em;
-  padding-left: 3em;
+  padding-left: ${({ theme }) => (theme.language === 'ja' ? '3.5em' : '3em')};
   margin: 1em 0;
   & > li {
     list-style-type: ${({ theme }) =>

@@ -12,6 +12,8 @@ const FontOverride = styled.div`
   font-family: ${({ theme }) =>
     (theme.language === 'ja' ? SERIF_JAPANESE : SERIF_KOREAN).join(', ')};
   text-align: justify;
+  font-feature-settings: ${({ theme }) =>
+    theme.language === 'ja' ? '"palt", "jp04", "jp83"' : 'inherit'};
 `
 
 const OptionContainer = styled.div`
@@ -28,6 +30,15 @@ const ProblemContent = styled.div`
     display: inline;
     margin-top: 0;
     text-indent: 0;
+  }
+  & > figure {
+    margin: 1em 0;
+    text-align: center;
+    filter: grayscale(1);
+    & > img {
+      max-width: 90%;
+      height: auto;
+    }
   }
 `
 
