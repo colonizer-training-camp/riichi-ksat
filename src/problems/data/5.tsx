@@ -40,7 +40,7 @@ const PROBLEM: Problem = {
   },
   options: [, ㄴ, ㄷ, ㄱㄴ, ㄴㄷ, ㄱㄴㄷ],
   optionPerRow: 3,
-  answer: 1,
+  answer: 4,
 }
 
 export default PROBLEM
