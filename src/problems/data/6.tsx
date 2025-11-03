@@ -54,7 +54,8 @@ const PROBLEM: Problem = {
           </li>
         </Box가나다>
         <p>
-          이에 대한 설명으로 옳은 것만을 &lt;보기&gt;에서 있는 대로 고른 것은?
+          이에 대한 설명으로 옳은 것만을 &lt;보기&gt;에서 있는 대로 고른 것은?{' '}
+          <ProblemScore score={3} />
         </p>
         <Viewㄱㄴㄷ>
           <li>

@@ -1,5 +1,6 @@
 import { useTheme } from '@emotion/react'
 import styled from '@emotion/styled'
+import Index from './Index'
 
 const ProblemScoreFloat = styled.span`
   display: inline-block;
@@ -20,8 +21,10 @@ const ProblemScore = ({ score }: Props) => {
   return (
     <>
       <ProblemScoreFloat>
-        [{score}
-        {language === 'ja' ? '点' : '점'}]
+        <Index>
+          [{score}
+          {language === 'ja' ? '点' : '점'}]
+        </Index>
       </ProblemScoreFloat>
       <Clearfix />
     </>
