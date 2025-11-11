@@ -17,7 +17,6 @@ const ImageItem = styled.span`
   gap: 16px;
   & > img {
     height: 4em;
-    filter: grayscale(1);
   }
 `
 

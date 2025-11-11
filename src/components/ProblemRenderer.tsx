@@ -31,13 +31,29 @@ const ProblemContent = styled.div`
     margin-top: 0;
     text-indent: 0;
   }
+  & img,
+  & svg {
+    filter: grayscale(1);
+  }
   & > figure {
     margin: 1em 0;
     text-align: center;
-    filter: grayscale(1);
-    & > img {
+    & img,
+    & svg {
       max-width: 90%;
       height: auto;
+    }
+  }
+  & table {
+    margin: 0 auto;
+    border-collapse: collapse;
+    & tr {
+      & > th,
+      & > td {
+        border: 1px solid;
+        padding: 0.2em 0.5em;
+        text-align: center;
+      }
     }
   }
 `
@@ -65,7 +81,9 @@ const ProblemRenderer = ({ problem, lang }: Props) => {
                 .filter((x) => x)
                 .map((option, idx) => (
                   <OptionRenderer key={idx} index={idx}>
-                    {option && 'ko' in (option as Record<string, unknown>)
+                    {option &&
+                    typeof option === 'object' &&
+                    'ko' in (option as Record<string, unknown>)
                       ? (option as Record<string, ReactNode>)[lang]
                       : (option as ReactNode)}
                   </OptionRenderer>

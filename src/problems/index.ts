@@ -9,7 +9,30 @@ import _08 from './data/8'
 import _09 from './data/9'
 
 import _10 from './data/10'
+import _11 from './data/11'
+import _12 from './data/12'
+import _13 from './data/13'
+import _14 from './data/14'
+import _15 from './data/15'
+import _16 from './data/16'
 
-const PROBLEMS = [_01, _02, _03, _04, _05, _06, _07, _08, _09, _10]
+const PROBLEMS = [
+  _01,
+  _02,
+  _03,
+  _04,
+  _05,
+  _06,
+  _07,
+  _08,
+  _09,
+  _10,
+  _11,
+  _12,
+  _13,
+  _14,
+  _15,
+  _16,
+]
 
 export default PROBLEMS
