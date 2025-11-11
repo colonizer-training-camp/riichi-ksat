@@ -32,7 +32,6 @@ const PROBLEM: Problem = {
               fontSize="140"
               textAnchor="middle"
               fill="inherit"
-              strokeWidth="10"
             >
               {O_GLYPHS_KO[0]}
             </text>

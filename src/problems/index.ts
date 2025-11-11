@@ -15,6 +15,11 @@ import _13 from './data/13'
 import _14 from './data/14'
 import _15 from './data/15'
 import _16 from './data/16'
+import _17 from './data/17'
+import _18 from './data/18'
+import _19 from './data/19'
+
+import _20 from './data/20'
 
 const PROBLEMS = [
   _01,
@@ -33,6 +38,10 @@ const PROBLEMS = [
   _14,
   _15,
   _16,
+  _17,
+  _18,
+  _19,
+  _20,
 ]
 
 export default PROBLEMS
