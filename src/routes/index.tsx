@@ -12,7 +12,7 @@ import { Fragment } from 'react/jsx-runtime'
 
 ReactGA.initialize('G-Q6XMB86VEX', {
   gaOptions: {
-    debug_mode: process.env.NODE_ENV !== 'production',
+    debug_mode: import.meta.env.DEV,
   },
 })
 
