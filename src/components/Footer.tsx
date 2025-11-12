@@ -10,6 +10,7 @@ import {
 import { useTheme } from '@emotion/react'
 import styled from '@emotion/styled'
 import { useMemo } from 'react'
+import Credits from './Credits'
 
 const CIRCLE_NUMBERS = '①②③④⑤⑥⑦⑧⑨⑩'.split('')
 
@@ -222,6 +223,7 @@ const Footer = ({ onClickSubmit, answer, submitted }: Props) => {
               ))}
             </tbody>
           </ScoreTable>
+          <Credits />
         </>
       )}
     </FooterWrapper>
