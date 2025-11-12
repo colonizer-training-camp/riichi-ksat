@@ -7,10 +7,14 @@ import { useTheme } from '@emotion/react'
 import styled from '@emotion/styled'
 import { createFileRoute } from '@tanstack/react-router'
 import { useEffect, useState } from 'react'
-import { Fragment } from 'react/jsx-runtime'
 import ReactGA from 'react-ga4'
+import { Fragment } from 'react/jsx-runtime'
 
-ReactGA.initialize('G-Q6XMB86VEX')
+ReactGA.initialize('G-Q6XMB86VEX', {
+  gaOptions: {
+    debug_mode: process.env.NODE_ENV !== 'production',
+  },
+})
 
 export const Route = createFileRoute('/')({
   component: App,
@@ -87,6 +91,31 @@ function App() {
         : '提出した解答は修正できません。提出しますか？',
     )
     if (!confirmResult) return
+
+    const score = answers.reduce((acc, answer, index) => {
+      if (answer === PROBLEMS[index].answer - 1) {
+        return acc + PROBLEMS[index].score
+      }
+      return acc
+    }, 0)
+
+    ReactGA.event({
+      category: 'Test',
+      action: 'Complete Test',
+      value: score,
+      nonInteraction: true,
+    })
+    answers.forEach((answer, index) => {
+      ReactGA.event({
+        category: `Question ${index + 1}`,
+        action: 'Submit Answer',
+        label:
+          answer === PROBLEMS[index].answer - 1
+            ? `${answer} (Correct)`
+            : `${answer} (Incorrect)`,
+        nonInteraction: true,
+      })
+    })
 
     setSubmitted(true)
   }
