@@ -9,6 +9,7 @@ import {
 import { useTheme } from '@emotion/react'
 import styled from '@emotion/styled'
 import { Em } from './Em'
+import { FontOverride } from './FontOverride'
 
 const InformationContainer = styled.div`
   display: flex;
@@ -80,61 +81,63 @@ export const Information = () => {
   const { language } = useTheme()
 
   return (
-    <InformationContainer>
-      <TimeRow>
-        <Time>{language === 'ja' ? '第1時限' : '제 1교시'}</Time>
-      </TimeRow>
-      <Subtitle>
-        {language === 'ja'
-          ? '2026年度開拓民訓練キャンプ麻雀能力評価試験問題'
-          : '2026학년도 개척단 훈련소 마작능력평가 문제지'}
-      </Subtitle>
-      <Title>{language === 'ja' ? 'リーチ麻雀科目' : '리치 마작 영역'}</Title>
-      <Precautions>
-        <li>
-          {language === 'ko' ? (
-            <>
-              문항에 따라 배점이 다릅니다. 3점 문항에는 점수가 표시되어
-              있습니다. 점수 표시가 없는 문항은 모두 2점입니다.
-            </>
-          ) : (
-            <>
-              問題によって配点が異なります。3点問題には点数が表示されています。点数表示のない問題はすべて2点です。
-            </>
-          )}
-        </li>
-        <li>
-          {language === 'ko' ? (
-            <>
-              별도로 명시되어 있지 않은 경우,{' '}
-              <Em
-                style={{
-                  fontFamily: 'inherit',
-                }}
-              >
-                &lt;작혼: 리치 마작&gt;의 4인 등급전에서의 규칙을 적용하여
-                문제를 해결
-              </Em>
-              하시오.
-            </>
-          ) : (
-            <>
-              特に明示されていない場合、
-              <Em>『雀魂』の4人段位戦でのルールを適用して問題を解決</Em>
-              しなさい。
-            </>
-          )}
-        </li>
-      </Precautions>
-      <PrecautionDoNotScroll>
-        {language === 'ko'
-          ? '※ 시험을 시작하려면 아래로 스크롤하시오.'
-          : '※ 試験を開始するには下にスクロールしなさい。'}
-      </PrecautionDoNotScroll>
-      <Subtitle>
-        {language === 'ja' ? '開拓民訓練キャンプ' : '개척단 훈련소'}
-      </Subtitle>
-    </InformationContainer>
+    <FontOverride>
+      <InformationContainer id="information">
+        <TimeRow>
+          <Time>{language === 'ja' ? '第1時限' : '제 1교시'}</Time>
+        </TimeRow>
+        <Subtitle>
+          {language === 'ja'
+            ? '2026年度開拓民訓練キャンプ麻雀能力評価試験問題'
+            : '2026학년도 개척단 훈련소 마작능력평가 문제지'}
+        </Subtitle>
+        <Title>{language === 'ja' ? 'リーチ麻雀科目' : '리치 마작 영역'}</Title>
+        <Precautions>
+          <li>
+            {language === 'ko' ? (
+              <>
+                문항에 따라 배점이 다릅니다. 3점 문항에는 점수가 표시되어
+                있습니다. 점수 표시가 없는 문항은 모두 2점입니다.
+              </>
+            ) : (
+              <>
+                問題によって配点が異なります。3点問題には点数が表示されています。点数表示のない問題はすべて2点です。
+              </>
+            )}
+          </li>
+          <li>
+            {language === 'ko' ? (
+              <>
+                별도로 명시되어 있지 않은 경우,{' '}
+                <Em
+                  style={{
+                    fontFamily: 'inherit',
+                  }}
+                >
+                  &lt;작혼: 리치 마작&gt;의 4인 등급전에서의 규칙을 적용하여
+                  문제를 해결
+                </Em>
+                하시오.
+              </>
+            ) : (
+              <>
+                特に明示されていない場合、
+                <Em>『雀魂』の4人段位戦でのルールを適用して問題を解決</Em>
+                しなさい。
+              </>
+            )}
+          </li>
+        </Precautions>
+        <PrecautionDoNotScroll>
+          {language === 'ko'
+            ? '※ 시험을 시작하려면 아래로 스크롤하시오.'
+            : '※ 試験を開始するには下にスクロールしなさい。'}
+        </PrecautionDoNotScroll>
+        <Subtitle>
+          {language === 'ja' ? '開拓民訓練キャンプ' : '개척단 훈련소'}
+        </Subtitle>
+      </InformationContainer>
+    </FontOverride>
   )
 }
 

@@ -1,20 +1,12 @@
 import type { Language } from '@/hooks/useLanguage'
 import useLanguage from '@/hooks/useLanguage'
 import type { Problem } from '@/problems/types'
-import { SERIF_JAPANESE, SERIF_KOREAN } from '@/styles/fonts'
 import { ThemeProvider } from '@emotion/react'
 import styled from '@emotion/styled'
 import type { ReactNode } from 'react'
+import { FontOverride } from './FontOverride'
 import OptionRenderer from './OptionRenderer'
 import ProblemNo from './ProblemNo'
-
-const FontOverride = styled.div`
-  font-family: ${({ theme }) =>
-    (theme.language === 'ja' ? SERIF_JAPANESE : SERIF_KOREAN).join(', ')};
-  text-align: justify;
-  font-feature-settings: ${({ theme }) =>
-    theme.language === 'ja' ? '"palt", "jp04", "jp83"' : 'inherit'};
-`
 
 const OptionContainer = styled.div`
   margin: 1em 0;
@@ -69,7 +61,7 @@ const ProblemRenderer = ({ problem, lang, answer, onAnswerChange }: Props) => {
   const { lang: defaultLang } = useLanguage()
 
   const component = (
-    <ProblemContent>
+    <ProblemContent id={`problem-${problem.index}`}>
       <ProblemNo index={problem.index} />
       {problem.content[lang || defaultLang]}
       <OptionContainer

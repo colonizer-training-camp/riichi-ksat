@@ -1,4 +1,5 @@
 import Information from '@/components/Information'
+import OMRCard from '@/components/OMRCard'
 import ProblemRenderer from '@/components/ProblemRenderer'
 import PROBLEMS from '@/problems'
 import styled from '@emotion/styled'
@@ -17,17 +18,29 @@ const FullscreenLayout = styled.div`
 `
 
 const ProblemWrapper = styled.div`
-  flex: 1;
+  flex: 3;
   min-width: 0;
   height: 100%;
   overflow: auto;
+  background-color: #f9f9f9;
+  scroll-behavior: smooth;
+  scroll-padding: 16px 0;
 `
 
 const OMRWrapper = styled.div`
-  flex: 0 0 360px;
+  flex: 0 0 280px;
   min-width: 0;
   height: 100%;
   overflow: auto;
+  background-color: #f8f8e0;
+  padding: 0 8px;
+
+  @media (max-width: 1120px) {
+    flex: 1 0 0;
+  }
+  @media (max-width: 768px) {
+    flex: 0 0 64px;
+  }
 `
 
 const ProblemContents = styled.div`
@@ -45,13 +58,16 @@ function App() {
   return (
     <FullscreenLayout>
       <OMRWrapper>
-        Lorem Ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-        mollit anim id est laborum.
+        <OMRCard
+          answers={answers}
+          onAnswerChange={(index, answer) =>
+            setAnswers((prev) => {
+              const updated = [...prev]
+              updated[index - 1] = answer
+              return updated
+            })
+          }
+        />
       </OMRWrapper>
       <ProblemWrapper>
         <ProblemContents>
@@ -65,11 +81,11 @@ function App() {
               />
               <ProblemRenderer
                 problem={problem}
-                answer={answers[problem.index]}
+                answer={answers[problem.index - 1]}
                 onAnswerChange={(newAnswer) =>
                   setAnswers((prev) => {
                     const updated = [...prev]
-                    updated[problem.index] = newAnswer
+                    updated[problem.index - 1] = newAnswer
                     return updated
                   })
                 }
