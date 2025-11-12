@@ -61,40 +61,50 @@ const ProblemContent = styled.div`
 interface Props {
   problem: Problem
   lang?: Language
+  answer: number
+  onAnswerChange: (answer: number) => void
 }
 
-const ProblemRenderer = ({ problem, lang }: Props) => {
+const ProblemRenderer = ({ problem, lang, answer, onAnswerChange }: Props) => {
   const { lang: defaultLang } = useLanguage()
+
+  const component = (
+    <ProblemContent>
+      <ProblemNo index={problem.index} />
+      {problem.content[lang || defaultLang]}
+      <OptionContainer
+        style={{
+          gridTemplateColumns: `repeat(${problem.optionPerRow}, 1fr)`,
+        }}
+      >
+        {problem.options
+          .filter((x) => x)
+          .map((option, idx) => (
+            <OptionRenderer
+              key={idx}
+              index={idx}
+              active={answer === idx}
+              onClick={() => onAnswerChange(idx)}
+            >
+              {option &&
+              typeof option === 'object' &&
+              'ko' in (option as Record<string, unknown>)
+                ? (option as Record<string, ReactNode>)[lang || defaultLang]
+                : (option as ReactNode)}
+            </OptionRenderer>
+          ))}
+      </OptionContainer>
+    </ProblemContent>
+  )
+
   if (lang) {
     return (
       <ThemeProvider theme={{ language: lang }}>
-        <FontOverride>
-          <ProblemContent>
-            <ProblemNo index={problem.index} />
-            {problem.content[lang]}
-            <OptionContainer
-              style={{
-                gridTemplateColumns: `repeat(${problem.optionPerRow}, 1fr)`,
-              }}
-            >
-              {problem.options
-                .filter((x) => x)
-                .map((option, idx) => (
-                  <OptionRenderer key={idx} index={idx}>
-                    {option &&
-                    typeof option === 'object' &&
-                    'ko' in (option as Record<string, unknown>)
-                      ? (option as Record<string, ReactNode>)[lang]
-                      : (option as ReactNode)}
-                  </OptionRenderer>
-                ))}
-            </OptionContainer>
-          </ProblemContent>
-        </FontOverride>
+        <FontOverride>{component}</FontOverride>
       </ThemeProvider>
     )
   }
-  return <>{problem.content[defaultLang]}</>
+  return component
 }
 
 export default ProblemRenderer
