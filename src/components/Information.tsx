@@ -27,6 +27,10 @@ const Subtitle = styled.span`
   font-size: 1.4em;
   text-align: center;
   line-height: 1;
+
+  @media (max-width: 768px) {
+    font-size: 1em;
+  }
 `
 
 const Title = styled.h1`
@@ -36,6 +40,10 @@ const Title = styled.h1`
   text-align: center;
   font-weight: ${({ theme }) => (theme.language === 'ja' ? 400 : 700)};
   line-height: 1;
+
+  @media (max-width: 768px) {
+    font-size: 1.5em;
+  }
 `
 
 const TimeRow = styled.div`
@@ -56,6 +64,10 @@ const Time = styled.span`
   border-radius: 1000px;
   word-break: keep-all;
   white-space: nowrap;
+
+  @media (max-width: 768px) {
+    font-size: 1em;
+  }
 `
 
 const Precautions = styled.ul`
@@ -66,6 +78,9 @@ const Precautions = styled.ul`
   list-style-type: '○ ';
   & > li {
     margin: 1em 0;
+  }
+  @media (max-width: 768px) {
+    padding: 1em 1em 1em 2.4em;
   }
 `
 
@@ -80,6 +95,10 @@ const PrecautionDoNotScroll = styled.span`
 
 const LanguageOption = styled.a`
   color: inherit;
+
+  @media (max-width: 768px) {
+    font-size: 80%;
+  }
 `
 
 export const Information = () => {

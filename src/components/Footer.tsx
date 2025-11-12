@@ -156,8 +156,8 @@ const Footer = ({ onClickSubmit, answer, submitted }: Props) => {
       ) : (
         <Precautions>
           * 注意事項
-          <br />◦ 解答用紙の該当欄に必要な内容を正確に記入（表記）したか
-          確認しなさい。
+          <br />◦
+          解答用紙の該当欄に必要な内容を正確に記入（表記）したか確認しなさい。
         </Precautions>
       )}
       <Button onClick={onClickSubmit} disabled={submitted}>
