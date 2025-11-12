@@ -1,16 +1,6 @@
 import Box가나다 from '@/components/Box가나다'
 import Viewㄱㄴㄷ from '@/components/Viewㄱㄴㄷ'
-import {
-  GG,
-  NN,
-  ㄱ,
-  ㄱㄴ,
-  ㄱㄴㄷ,
-  ㄱㄷ,
-  ㄴㄷ,
-  가,
-  나,
-} from '@/components/macros'
+import { GG, NN, ㄱ, ㄱㄴ, ㄱㄴㄷ, ㄱㄷ, ㄴㄷ } from '@/components/macros'
 import type { Problem } from '../types'
 
 const PROBLEM: Problem = {
@@ -34,8 +24,12 @@ const PROBLEM: Problem = {
         </p>
         <Viewㄱㄴㄷ>
           <li>A는 1판역이다.</li>
-          <li>{가}의 예로는 ‘동(東)’ 패가 있다.</li>
-          <li>‘치’ 발성을 한 작사는 {나} 상태이다.</li>
+          <li>
+            <GG />의 예로는 ‘동(東)’ 패가 있다.
+          </li>
+          <li>
+            ‘치’ 발성을 한 작사는 <NN /> 상태이다.
+          </li>
         </Viewㄱㄴㄷ>
       </>
     ),
@@ -55,8 +49,15 @@ const PROBLEM: Problem = {
         <p>これについての説明として正しいものを、&lt;例&gt;の中から選べ。</p>
         <Viewㄱㄴㄷ>
           <li>「A」は1翻役である。</li>
-          <li>{가}の例としては「東」牌がある。</li>
-          <li>「チー」をした雀士は{나}状態である。</li>
+          <li>
+            <GG />
+            の例としては「東」牌がある。
+          </li>
+          <li>
+            「チー」をした雀士は
+            <NN />
+            状態である。
+          </li>
         </Viewㄱㄴㄷ>
       </>
     ),
