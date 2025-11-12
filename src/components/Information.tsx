@@ -42,6 +42,7 @@ const TimeRow = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  gap: 16px;
 `
 
 const Time = styled.span`
@@ -77,6 +78,10 @@ const PrecautionDoNotScroll = styled.span`
   background-color: #e8e8e8;
 `
 
+const LanguageOption = styled.a`
+  color: inherit;
+`
+
 export const Information = () => {
   const { language } = useTheme()
 
@@ -85,6 +90,9 @@ export const Information = () => {
       <InformationContainer id="information">
         <TimeRow>
           <Time>{language === 'ja' ? '第1時限' : '제 1교시'}</Time>
+          <div style={{ flexGrow: 1 }} />
+          <LanguageOption href="/?lang=ko">한국어판</LanguageOption>
+          <LanguageOption href="/?lang=ja">日本語版</LanguageOption>
         </TimeRow>
         <Subtitle>
           {language === 'ja'

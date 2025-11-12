@@ -12,10 +12,15 @@ const OptionItem = styled.span<OptionItemProps>`
   padding-left: 1em;
   user-select: none;
   cursor: pointer;
-  text-decoration: ${({ active }) => (active ? 'underline red' : 'none')};
+  text-decoration: ${({ active }) => (active ? 'underline' : 'none')};
   text-underline-offset: 0.4em;
-  text-decoration-thickness: ${({ active }) => (active ? '0.15em' : '0em')};
-  transition: text-decoration-thickness 0.2s;
+  text-decoration-thickness: 0.15em;
+  &:hover {
+    text-decoration: ${({ active }) =>
+      active ? 'underline' : 'dashed underline'};
+    text-underline-offset: ${({ active }) => (active ? '0.4em' : '0.4em')};
+    text-decoration-thickness: ${({ active }) => (active ? '0.15em' : '0.1em')};
+  }
 `
 
 const OptionCircle = styled.span`

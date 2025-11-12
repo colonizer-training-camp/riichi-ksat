@@ -1,10 +1,12 @@
+import Footer from '@/components/Footer'
 import Information from '@/components/Information'
 import OMRCard from '@/components/OMRCard'
 import ProblemRenderer from '@/components/ProblemRenderer'
 import PROBLEMS from '@/problems'
+import { useTheme } from '@emotion/react'
 import styled from '@emotion/styled'
 import { createFileRoute } from '@tanstack/react-router'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Fragment } from 'react/jsx-runtime'
 
 export const Route = createFileRoute('/')({
@@ -53,20 +55,52 @@ const ProblemContents = styled.div`
 `
 
 function App() {
+  const { language } = useTheme()
+  const [submitted, setSubmitted] = useState(false)
   const [answers, setAnswers] = useState(new Array(PROBLEMS.length).fill(-1))
+
+  useEffect(() => {
+    document.documentElement.lang = language
+    document.title = language === 'ko' ? '리치 마작 영역' : 'リーチ麻雀領域'
+  }, [language])
+
+  const handleSubmission = () => {
+    if (submitted) return
+
+    const unanswered = answers
+      .map((answer, index) => (answer === -1 ? index + 1 : null))
+      .filter((v) => v !== null)
+    if (unanswered.length > 0) {
+      const confirmResult = window.confirm(
+        language === 'ko'
+          ? `다음 문제의 답안이 작성되지 않았습니다.\n${unanswered.join(', ')}\n\n계속하시겠습니까?`
+          : `次の問題の解答が記入されていません。\n${unanswered.join(', ')}\n\n続行しますか？`,
+      )
+      if (!confirmResult) return
+    }
+    const confirmResult = window.confirm(
+      language === 'ko'
+        ? '제출한 답안은 수정할 수 없습니다. 제출하시겠습니까?'
+        : '提出した解答は修正できません。提出しますか？',
+    )
+    if (!confirmResult) return
+
+    setSubmitted(true)
+  }
 
   return (
     <FullscreenLayout>
       <OMRWrapper>
         <OMRCard
           answers={answers}
-          onAnswerChange={(index, answer) =>
+          onAnswerChange={(index, answer) => {
+            if (submitted) return
             setAnswers((prev) => {
               const updated = [...prev]
               updated[index - 1] = answer
               return updated
             })
-          }
+          }}
         />
       </OMRWrapper>
       <ProblemWrapper>
@@ -82,16 +116,27 @@ function App() {
               <ProblemRenderer
                 problem={problem}
                 answer={answers[problem.index - 1]}
-                onAnswerChange={(newAnswer) =>
+                onAnswerChange={(newAnswer) => {
+                  if (submitted) return
                   setAnswers((prev) => {
                     const updated = [...prev]
                     updated[problem.index - 1] = newAnswer
                     return updated
                   })
-                }
+                }}
               />
             </Fragment>
           ))}
+          <div
+            style={{
+              borderBottom: '1px solid #e0e0e0',
+            }}
+          />
+          <Footer
+            onClickSubmit={handleSubmission}
+            answer={answers}
+            submitted={submitted}
+          />
         </ProblemContents>
       </ProblemWrapper>
     </FullscreenLayout>

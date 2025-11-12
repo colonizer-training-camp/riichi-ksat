@@ -5,7 +5,7 @@ import type { Problem } from '../types'
 
 const PROBLEM: Problem = {
   index: 10,
-  score: 2,
+  score: 3,
   content: {
     ko: (
       <>
