@@ -8,6 +8,9 @@ import styled from '@emotion/styled'
 import { createFileRoute } from '@tanstack/react-router'
 import { useEffect, useState } from 'react'
 import { Fragment } from 'react/jsx-runtime'
+import ReactGA from 'react-ga4'
+
+ReactGA.initialize('G-Q6XMB86VEX')
 
 export const Route = createFileRoute('/')({
   component: App,
