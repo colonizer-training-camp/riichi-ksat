@@ -1,7 +1,7 @@
 import Viewㄱㄴㄷ from '@/components/Viewㄱㄴㄷ'
-import { GG, NN, ㄱ, ㄱㄴㄷ, ㄴ, ㄷ } from '@/components/macros'
-import type { Problem } from '../types'
+import { GG, NN, ㄱ, ㄱㄴ, ㄴ, ㄴㄷ, ㄷ } from '@/components/macros'
 import styled from '@emotion/styled'
+import type { Problem } from '../types'
 
 const ImageContainer = styled.p`
   display: flex;
@@ -93,7 +93,7 @@ const PROBLEM: Problem = {
       </>
     ),
   },
-  options: [, ㄱ, ㄴ, ㄷ, ㄱ, ㄱㄴㄷ],
+  options: [, ㄱ, ㄴ, ㄷ, ㄱㄴ, ㄴㄷ],
   optionPerRow: 3,
   answer: 3,
 }
